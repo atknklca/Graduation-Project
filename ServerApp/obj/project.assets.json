@@ -6113,19 +6113,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Oguzhan\\.nuget\\packages\\": {}
+    "C:\\Users\\Muhammed\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Oguzhan\\Documents\\Vs Code Projects\\UniversityProject\\ServerApp\\ServerApp.csproj",
+      "projectUniqueName": "C:\\Users\\Muhammed\\Desktop\\UniversityProject\\ServerApp\\ServerApp.csproj",
       "projectName": "ServerApp",
-      "projectPath": "C:\\Users\\Oguzhan\\Documents\\Vs Code Projects\\UniversityProject\\ServerApp\\ServerApp.csproj",
-      "packagesPath": "C:\\Users\\Oguzhan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Oguzhan\\Documents\\Vs Code Projects\\UniversityProject\\ServerApp\\obj\\",
+      "projectPath": "C:\\Users\\Muhammed\\Desktop\\UniversityProject\\ServerApp\\ServerApp.csproj",
+      "packagesPath": "C:\\Users\\Muhammed\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Muhammed\\Desktop\\UniversityProject\\ServerApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Oguzhan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Muhammed\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

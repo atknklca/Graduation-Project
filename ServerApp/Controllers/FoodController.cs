@@ -54,6 +54,7 @@ namespace ServerApp.Controllers
             food.foodDescription = newData.foodDescription;
             food.Users = newData.Users;
             food.City = newData.City;
+            food.imageUrl = newData.imageUrl;
             try{
                 await _context.SaveChangesAsync();
             }

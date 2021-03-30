@@ -55,6 +55,7 @@ namespace ServerApp.Controllers
             city.cityName = newData.cityName;
             city.cityDescription = newData.cityDescription;
             city.Foods = newData.Foods;
+            city.imageUrl = newData.imageUrl;
             try{
                 await _context.SaveChangesAsync();
             }
