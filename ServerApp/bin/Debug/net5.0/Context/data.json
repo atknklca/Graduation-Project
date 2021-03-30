@@ -1,0 +1,19 @@
+{
+	"cityName": "a",
+	"cityDescription": "b",
+	"imageUrl": "c",
+	"Foods": [
+		{
+		"foodName": "d",
+		"foodDescription": "e",
+		"imageUrl": "f",
+		"Restaurant" :{
+			"restaurantName": "g",
+			"restaurantAdress": "h",
+			"restaurantGsm": 12312,
+			"restaurantPwd": "i",
+			"imageUrl": "j"
+		}			
+		}
+	]
+}

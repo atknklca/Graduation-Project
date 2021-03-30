@@ -63,6 +63,7 @@ namespace ServerApp.Controllers
             restaurant.restaurantGsm = newData.restaurantGsm;
             restaurant.restaurantPwd = newData.restaurantPwd;
             restaurant.Reservations = newData.Reservations;
+            restaurant.imageUrl = newData.imageUrl;
             try{
                 await _context.SaveChangesAsync();
             }
