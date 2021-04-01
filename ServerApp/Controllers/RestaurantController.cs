@@ -22,7 +22,8 @@ namespace ServerApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRestaurants(){
             var restorants = await _context.Restaurants.Select(r => RestorantToDto(r)).ToListAsync();
-            return Ok(restorants);
+            var x = await _context.Restaurants.Include(r => r.Food).ToListAsync();
+            return Ok(x);
         }
         //localhost:5000/api/restaurant/2
         [HttpGet("{id}")]

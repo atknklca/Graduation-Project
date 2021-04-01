@@ -13,7 +13,8 @@ namespace ServerApp.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Restaurant>().HasOne(b=> b.Food).WithOne(i =>i.Restaurant).HasForeignKey<Food>(b => b.FoodID);
+            builder.Entity<Food>().HasOne(b=> b.Restaurant).WithOne(i =>i.Food).HasForeignKey<Restaurant>(b => b.RestaurantID);
+            builder.Entity<Food>().HasOne(c => c.City).WithMany(f => f.Foods);
         }
 
         } 

@@ -12,12 +12,13 @@ namespace ServerApp.Context
     {
         public static async Task Seed(DataContext context){
             if(!context.Cities.Any()){
-                var cities = File.ReadAllText("Context/data.json");
-                var listOfCities = JsonConvert.DeserializeObject<List<City>>(cities);
+                var foods = File.ReadAllText("Context/data.json");
+                var listOfFoods = JsonConvert.DeserializeObject<List<Food>>(foods);
 
-                foreach (var city in listOfCities)
+                foreach (var food in listOfFoods)
                {
-                                 await context.Cities.AddAsync(city);  
+                                 await context.Foods.AddAsync(food);  
+                                 await context.SaveChangesAsync();
                 }
                          }
         }

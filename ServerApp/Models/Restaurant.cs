@@ -11,7 +11,6 @@ namespace ServerApp.Models
       public string restaurantPwd{get; set;}
       public string imageUrl { get; set; }
       public List<Reservation> Reservations{get; set;}
-
       public Food Food { get; set; }
     }
 }

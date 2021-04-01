@@ -197,3 +197,6 @@ C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\obj\Debug\net5.0\ServerApp
 C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\obj\Debug\net5.0\ServerApp.csproj.CopyComplete
 C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\obj\Debug\net5.0\ServerApp.genruntimeconfig.cache
 C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\bin\Debug\net5.0\Context\data.json
+C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\bin\Debug\net5.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\bin\Debug\net5.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\Muhammed\Desktop\UniversityProject\ServerApp\bin\Debug\net5.0\Newtonsoft.Json.Bson.dll

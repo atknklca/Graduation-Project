@@ -23,6 +23,8 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using ServerApp.advice;
 
+
+
 namespace ServerApp
 {
     public class Startup
@@ -41,6 +43,7 @@ namespace ServerApp
             options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
             services.AddIdentity<User, Role>().AddEntityFrameworkStores<DataContext>();
             services.Configure<IdentityOptions>(options => {
+               
                 options.Password.RequireDigit= true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
@@ -49,6 +52,10 @@ namespace ServerApp
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.User.RequireUniqueEmail = true;
             });
+            services.AddControllers().AddNewtonsoftJson( options =>{
+                     options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                 }
+                 );
             services.AddAuthentication(x => {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -62,7 +69,8 @@ namespace ServerApp
                         ValidateAudience = false
                     };
                 });
-            services.AddControllers();
+                services.AddControllers();
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServerApp", Version = "v1" });
