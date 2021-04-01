@@ -1,19 +1,13 @@
-{
-	"cityName": "a",
-	"cityDescription": "b",
-	"imageUrl": "c",
-	"Foods": [
-		{
-		"foodName": "d",
-		"foodDescription": "e",
-		"imageUrl": "f",
-		"Restaurant" :{
-			"restaurantName": "g",
-			"restaurantAdress": "h",
+[
+	{			
+		"foodName": "g",
+		"foodDescription": "h",
+		"imageUrl": "j",
+		"Restaurant":{
+			"restaurantName": "k",
+			"restaurantAdress": "l",
 			"restaurantGsm": 12312,
 			"restaurantPwd": "i",
-			"imageUrl": "j"
-		}			
-		}
-	]
-}
+			"imageUrl": "j"}
+	}			
+]

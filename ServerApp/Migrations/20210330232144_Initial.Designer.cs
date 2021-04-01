@@ -10,7 +10,7 @@ using ServerApp.Context;
 namespace ServerApp.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210327104554_Initial")]
+    [Migration("20210330232144_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace ServerApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FoodUserDto", b =>
+            modelBuilder.Entity("FoodUser", b =>
                 {
                     b.Property<int>("FavoritesFoodID")
                         .HasColumnType("int");
@@ -33,7 +33,7 @@ namespace ServerApp.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("FoodUserDto");
+                    b.ToTable("FoodUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -137,45 +137,6 @@ namespace ServerApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ServerApp.DTO.RestaurantDto", b =>
-                {
-                    b.Property<int>("RestaurantID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("restaurantAdress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("restaurantGsm")
-                        .HasColumnType("int");
-
-                    b.Property<string>("restaurantName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RestaurantID");
-
-                    b.ToTable("RestaurantDto");
-                });
-
-            modelBuilder.Entity("ServerApp.DTO.UserDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("userEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserDto");
-                });
-
             modelBuilder.Entity("ServerApp.Models.City", b =>
                 {
                     b.Property<int>("CityID")
@@ -189,6 +150,9 @@ namespace ServerApp.Migrations
                     b.Property<string>("cityName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("imageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("CityID");
 
                     b.ToTable("Cities");
@@ -197,14 +161,9 @@ namespace ServerApp.Migrations
             modelBuilder.Entity("ServerApp.Models.Food", b =>
                 {
                     b.Property<int>("FoodID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CityID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("CityID")
                         .HasColumnType("int");
 
                     b.Property<string>("foodDescription")
@@ -213,11 +172,12 @@ namespace ServerApp.Migrations
                     b.Property<string>("foodName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("imageUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("FoodID");
 
                     b.HasIndex("CityID");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Foods");
                 });
@@ -230,12 +190,6 @@ namespace ServerApp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int?>("RestaurantID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RestaurantID1")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserDtoId")
                         .HasColumnType("int");
 
                     b.Property<int?>("UserId")
@@ -257,10 +211,6 @@ namespace ServerApp.Migrations
 
                     b.HasIndex("RestaurantID");
 
-                    b.HasIndex("RestaurantID1");
-
-                    b.HasIndex("UserDtoId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
@@ -272,6 +222,9 @@ namespace ServerApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("imageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("restaurantAdress")
                         .HasColumnType("nvarchar(max)");
@@ -386,7 +339,7 @@ namespace ServerApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FoodUserDto", b =>
+            modelBuilder.Entity("FoodUser", b =>
                 {
                     b.HasOne("ServerApp.Models.Food", null)
                         .WithMany()
@@ -394,7 +347,7 @@ namespace ServerApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerApp.DTO.UserDto", null)
+                    b.HasOne("ServerApp.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -458,42 +411,30 @@ namespace ServerApp.Migrations
                         .WithMany("Foods")
                         .HasForeignKey("CityID");
 
-                    b.HasOne("ServerApp.Models.User", null)
-                        .WithMany("Favorites")
-                        .HasForeignKey("UserId");
+                    b.HasOne("ServerApp.Models.Restaurant", "Restaurant")
+                        .WithOne("Food")
+                        .HasForeignKey("ServerApp.Models.Food", "FoodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("City");
-                });
-
-            modelBuilder.Entity("ServerApp.Models.Reservation", b =>
-                {
-                    b.HasOne("ServerApp.Models.Restaurant", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("RestaurantID");
-
-                    b.HasOne("ServerApp.DTO.RestaurantDto", "Restaurant")
-                        .WithMany("Reservations")
-                        .HasForeignKey("RestaurantID1");
-
-                    b.HasOne("ServerApp.DTO.UserDto", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserDtoId");
-
-                    b.HasOne("ServerApp.Models.User", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserId");
 
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("ServerApp.DTO.RestaurantDto", b =>
+            modelBuilder.Entity("ServerApp.Models.Reservation", b =>
                 {
-                    b.Navigation("Reservations");
-                });
+                    b.HasOne("ServerApp.Models.Restaurant", "Restaurant")
+                        .WithMany("Reservations")
+                        .HasForeignKey("RestaurantID");
 
-            modelBuilder.Entity("ServerApp.DTO.UserDto", b =>
-                {
-                    b.Navigation("Reservations");
+                    b.HasOne("ServerApp.Models.User", "User")
+                        .WithMany("Reservations")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Restaurant");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ServerApp.Models.City", b =>
@@ -503,13 +444,13 @@ namespace ServerApp.Migrations
 
             modelBuilder.Entity("ServerApp.Models.Restaurant", b =>
                 {
+                    b.Navigation("Food");
+
                     b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("ServerApp.Models.User", b =>
                 {
-                    b.Navigation("Favorites");
-
                     b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
