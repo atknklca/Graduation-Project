@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using ServerApp.Context;
 using ServerApp.DTO;
 using ServerApp.Models;
+using System.Linq;
 
 namespace ServerApp.Controllers
 {
@@ -21,7 +22,7 @@ namespace ServerApp.Controllers
         }
         //localhost:5000/api/reservation
         // [AllowAnonymous]
-        [HttpGet]
+       [HttpGet]
         public async Task<IActionResult> GetReservations() { 
             var reservations = await _context.Reservations.Select(r => ReservationToDto(r)).ToListAsync();
             return Ok(reservations); 

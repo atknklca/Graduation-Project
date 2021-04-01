@@ -10,5 +10,11 @@ namespace ServerApp.Context
             public DbSet<City> Cities { get; set; }
             public DbSet<Reservation> Reservations { get; set; }
             public DbSet<Food> Foods { get; set; }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<Restaurant>().HasOne(b=> b.Food).WithOne(i =>i.Restaurant).HasForeignKey<Food>(b => b.FoodID);
+        }
+
         } 
 }

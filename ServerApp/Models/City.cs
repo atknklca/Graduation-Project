@@ -7,6 +7,7 @@ namespace ServerApp.Models
         public int CityID{get; set;}
         public string cityName{get; set;}
         public string cityDescription{get; set;}
+        public string imageUrl { get; set; }
         public List<Food> Foods{get; set;}
     }
 }
