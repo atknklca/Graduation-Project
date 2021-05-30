@@ -11,7 +11,7 @@ namespace ServerApp.Context
     public class SeedDatabase
     {
         public static async Task Seed(DataContext context){
-            if(!context.Cities.Any()){
+            if(!context.Foods.Any()){
                 var foods = File.ReadAllText("Context/data.json");
                 var listOfFoods = JsonConvert.DeserializeObject<List<Food>>(foods);
 

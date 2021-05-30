@@ -1,16 +1,18 @@
+using System.ComponentModel.DataAnnotations;
 using ServerApp.DTO;
 
 namespace ServerApp.Models
 {
     public class Reservation
     {
-        public int ReservationID{get; set;}
-        public string reservationOwner{get; set;}
-        public int reservationOwnerGSM{get; set;}
-        public string reservationDate{get; set;}
-        public string reservationTime {get; set;}
-        public virtual Restaurant Restaurant{get; set;}
-        public virtual User User{get; set;}
-
+        public int ReservationId{get; set;}
+        public string owner{get; set;}
+        public string ownerGsm{get; set;}
+        public string date{get; set;}
+        public string time{get; set;}
+        public int RestaurantID{get; set;}
+        public Restaurant Restaurant{get; set;}
+        public int UserId{get; set;}
+        public User User{get; set;}
     }
 }

@@ -1,0 +1,153 @@
+<nav class="navbar navbar-expand-lg bg-primary fixed-top navbar-transparent" color-on-scroll="500" style="margin: 0; padding: 0;">
+  <div class="container">
+    <img src="assets/img/logo-yemin-ediyorum-last.png " width="70" height="70" style="margin: 0.5rem;">
+    <div class="navbar-translate" style="margin-left: 2rem;">
+      <a class="navbar-brand" [routerLink]="['/index']" placement="bottom" ngbTooltip="WuuTec Bitirme Projesi">
+        Ne Nerede Yenir?
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation"
+        (click)="sidebarToggle()">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+      </button>
+    </div>
+    <div class="collapse navbar-collapse" data-nav-image="assets/img/blurred-image-1.jpg" data-color="orange">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" (click)="buttonClick('favorite')"  style="cursor: pointer;">
+            <i class="now-ui-icons ui-2_favourite-28"></i>
+            <p>Favori Şehirlerim</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- (click)="buttonClick('ek-sayfa')" -->
+          <a class="nav-link" (click)="buttonClick('reservation')"  style="cursor: pointer;"  >
+            <i class="now-ui-icons ui-1_send"></i>
+            <p>Rezervasyonlarım</p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" rel="tooltip" data-placement="bottom" (click)="openLogin(classic)"
+            style="cursor: pointer;">
+            <i class="now-ui-icons users_single-02"></i>
+            <p>Giriş Yap</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <ng-template #classic let-c="close" let-d="dismiss">
+    <div class="section section-signup"
+      style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 15rem;">
+      <div class="modal-header" style="margin: auto;">
+        <h5 class="modal-title" style="margin: auto; font-family: 'Courier New', Courier, monospace; color: white;">
+          Giriş</h5>
+        <button type="button" class="close" style="color: black; font-size: 2rem;" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container login-page">
+          <div class="row">
+            <div class="col-md-10 content-center ml-auto mr-auto">
+              <div class="card card-login card-plain">
+                <form class="form" method="" action="">
+                  <div class="content">
+                    <div class="input-group form-group-no-border input-lg"
+                      [ngClass]="{'input-group-focus':focus===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="now-ui-icons users_circle-08"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="E-mail" (focus)="focus=true"
+                        (blur)="focus=false">
+                    </div>
+                    <div class="input-group form-group-no-border input-lg"
+                      [ngClass]="{'input-group-focus':focus1===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
+                      </div>
+                      <input type="password" placeholder="Parola" class="form-control" (focus)="focus1=true"
+                        (blur)="focus1=false" />
+                    </div>
+                  </div>
+                  <div class="footer text-center">
+                    <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Giriş Yap</a>
+                  </div>
+                  <div class="text-center" style="cursor: pointer;">
+                    <h6>
+                      <a (click)="d('Cross click'); hesapOlustur(hesapOlusturTemplate);" sty class="link" >Hesap Oluştur</a>
+                    </h6>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+
+  <ng-template #hesapOlusturTemplate let-c="close" let-d="dismiss">
+    <div class="section section-signup"
+      style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 15rem;">
+      <div class="modal-header" style="margin: auto;">
+        <h5 class="modal-title" style="margin: auto; font-family: 'Courier New', Courier, monospace; color: white;">
+          Hesap Oluştur</h5>
+        <button type="button" class="close" style="color: black; font-size: 2rem;" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="container login-page">
+          <div class="row">
+            <div class="col-md-10 content-center ml-auto mr-auto">
+              <div class="card card-login card-plain">
+                <form class="form" method="" action="">
+                  <div class="content">
+                    <div class="input-group form-group-no-border input-lg"
+                      [ngClass]="{'input-group-focus':focus===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="now-ui-icons users_circle-08"></i></span>
+                      </div>
+                      <input type="text" class="form-control" placeholder="Kullanıcı Adı" (focus)="focus=true"
+                        (blur)="focus=false">
+                    </div>
+                    <div class="input-group form-group-no-border input-lg"
+                      [ngClass]="{'input-group-focus':focus1===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
+                      </div>
+                      <input type="text" placeholder="E-mail" class="form-control" (focus)="focus1=true"
+                        (blur)="focus1=false" />
+                    </div>
+                    <div class="input-group form-group-no-border input-lg"
+                      [ngClass]="{'input-group-focus':focus1===true}">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="now-ui-icons text_caps-small"></i></span>
+                      </div>
+                      <input type="password" placeholder="Password" class="form-control" (focus)="focus1=true"
+                        (blur)="focus1=false" />
+                    </div>
+                  </div>
+                  <div class="footer text-center">
+                    <a href="#pablo" class="btn btn-primary btn-round btn-lg btn-block">Kayıt Ol</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </ng-template>
+</nav>

@@ -41,7 +41,7 @@ namespace ServerApp.Controllers
         //localhost:5000/api/user/2
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(int id) { 
-            var user = await _context.Users.FindAsync(id);
+            var user = await _context.Users.Include(u=>u.Favorites).Include(u => u.Reservations).FirstOrDefaultAsync(u => u.Id==id);
             if(user == null){
                 return NotFound();
             }

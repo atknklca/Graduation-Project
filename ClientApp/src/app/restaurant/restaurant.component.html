@@ -1,0 +1,74 @@
+<div class="main">
+
+    <div class="container" style="padding-top: 5rem; padding-bottom: 5rem;">
+
+
+        <div class="row" style="margin: 2rem;position: relative; padding-bottom: 3rem;">
+            <div class="col-5"><img style="width: 20rem; " src="assets/img/balik-ekmek.jpg"> </div>
+            <div class="col-7">
+                <div class="rest-title">
+                    <h1>Restoran</h1>
+                </div>
+                <div class="rest-address">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vitae augue augue.
+                        Etiam quis nunc mauris.</p>
+                </div>
+                <div class="rest-phone">+905543799774</div>
+            </div>
+            <div style="right: 0; position: absolute; bottom: 0;">
+                <button type="button" (click)="addReservation(classic)" class="btn btn-primary btn-round">Rezervasyon
+                    Yap</button>
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+
+<ng-template #classic let-c="close" let-d="dismiss">
+    <div class="modal-header" style="margin: auto;">
+        <span class="modal-title text-center badge badge-neutral" style="font-size: 1.5rem;">Rezervasyon</span>
+        <!-- <button type="button" class="close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button> -->
+    </div>
+    <div class="modal-body">
+        <form class="form-gruop">
+            <div class="input-group">
+                <div class="input-item">
+                    <input type="text" placeholder="sahip" class="form-control"/>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-item">
+                    <input type="text" value="" placeholder="gsm" class="form-control"/>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-item">
+                    <input type="text" value="" placeholder="tarih" class="form-control"/>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-item">
+                    <input type="text" value="" placeholder="zaman" class="form-control"/>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="modal-footer">
+        <div class="left-side">
+            <button type="button" class="btn btn-danger btn-link" style="background-color: #222222; border-radius: 15px;" (click)="c('Close click')">Vazgeç</button>
+        </div>
+        <div class="divider"></div>
+        <div class="right-side">
+            <button type="button" class="btn btn-success btn-link" style="background-color: #222222; border-radius: 15px;" (click)="c('Close click')">Onayla</button>
+        </div>
+    </div>
+</ng-template>

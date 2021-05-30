@@ -1,0 +1,88 @@
+[
+	{			
+		"foodName": "Kebap",
+		"foodDescription": "Adana kebabı, şehrin adını en çok duyurduğu bugün ülkemizin dört bir yanında restoranlarda Adana dürüm, Adana kebap olarak menülere giren lezzetidir. Adana’nın meşhur lezzeti Adana kebabını her yerde deneyimleyebilirsiniz ancak gerçek anlamda bir Adana kebap yemek isterseniz rotanızı kebabın ana vatanı olan Adana’ya yöneltmelisiniz. Adana’nın dürümcülerinde ve restoranlarında kolayca bulabileceğiniz Adana kebap acılı ve acısız seçenekleri ile müşterilere sunuluyor. Adana kebap yapılırken kullanılan dana kıyma ve kuzu kıyma, baharatlar ve tabi ki yöresel salça, tarifi ana vatanında deneyimleyenlerin çok daha leziz bulmasının nedenleri arasında yer alıyor. Birçokları tarafından evlerde dahi denenen Adana kebap asıl olarak yapılırken birçok püf noktası bulunan bir lezzet. Bu nedenle de gerçek bir Adana usulü kebap yemek isterseniz yine gitmeniz gereken yer Adana olacaktır. Yöresel lezzetlerinden tutun da salçasının tadına kadar özgünlük kokan bu şehirde Adana kebap yemeye doyamayabilirsiniz.",
+		"imageUrl": "https://i.resmim.net/p3Ymn.jpg",
+		"City":{
+			"cityName": "Adana",
+			"cityDescription": "Adana Seyhan Nehri’nin kıyısında Toros Dağları’nın güneyine kurulmuş, 2016 yıl sonu nüfus sayımına göre iki milyonu aşkın nüfusu ile Türkiye’nin en yüksek altıncı nüfusa sahip şehridir. Seyhan, Yüreğir, Çukurova ve Sarıçam merkez ilçeleriyle birlikte toplam 15 ilçesi ve belediyesi bulunmaktadır. Türkiye’nin en büyük altıncı şehri olması dolayısıyla, Adana ünlü ticaret ve kültür merkezlerinden biri olarak da bilinmektedir.",
+			"imageUrl": "https://i.resmim.net/p38jr.jpg"
+		},
+		"Restaurant":{
+			"restaurantName":"Kaburgacı Yaşar Usta",
+			"restaurantAdress":"Yavuzlar Mh. 4070sk no:27 Aksantaş Toki İş Merkezi, 01220 Yüreğir/Adana",
+			"restaurantGsm":"0542 785 89 70",
+			"restaurantPwd":"1234",
+			"imageUrl":"https://i.resmim.net/pGTBy.jpg"
+		}
+	},
+	{
+		"foodName": "Çiğ Köfte",
+		"foodDescription": "Adıyaman çiğ köftesi, Türkiye’nin dört bir yanında tadılabilecek bir lezzettir. Ancak Adıyaman’da yenildiğinde daha bir lezzetlidir. Yapımı zahmetli olan bu yiyeceğin sunumunda limon ve yeşillik ana malzemeler olarak kullanılmaktadır. Şehirde yer alan birçok farklı noktada bu lezzeti denerken yanında damak zevkinize göre ayran veya şalgam tercih edebilirsiniz. Etli yapılanların tadı ayrı bir güzel olurken acı seviyesine dikkat etmeniz gerektiğini unutmamanız gerekmektedir. ",
+		"imageUrl": "https://i.resmim.net/pWlJL.jpg",
+		"City":{
+			"cityName": "Adıyaman",
+			"cityDescription": "Palanlı Mağarası'nda yapılan incelemeler sonucu MÖ 40.000 yılına kadar uzanan tarihi ve bu tarihin ardında bıraktığı eserlerle öne çıkan Adıyaman, Türkiye’nin Güneydoğu Anadolu Bölgesi’nin Orta Fırat bölümünde yer almaktadır. Birçok Neolotik ve Kalkilitik çağlara ait izlere rastlandığı görülen kentte, Hititlerden Kommagene Krallığı'na sonrasında ise Selçuklulardan Osmanlılara uzanan tarihi bir dokuda mevcuttur. Şehir, 9 ilçesi ve 427 köyüyle beraber 7.871 kilometrekarelik yüzölçümünde 610.484 kişilik nüfusa sahiptir. Adıyaman kuzeyinde Malatya, batısındaKahramanmaraş, güneybatısında Gaziantep, güneydoğusunda Şanlıurfa ve doğusunda Diyarbakır ile komşudur.",
+			"imageUrl": "https://i.resmim.net/pWqao.jpg"	
+		},
+		"Restaurant":{
+			"restaurantName":"Babacan Sait Usta Çiğ Köfte",
+			"restaurantAdress":"Eski Saray Mah. Gölbaşı Cad. Adıyaman Merkez, Adıyaman Türkiye",
+			"restaurantGsm":"+90 416 216 58 56",
+			"restaurantPwd":"1234",
+			"imageUrl":"https://i.resmim.net/pWe0b.jpg"
+		}
+	},
+	{		
+		"foodName": "Keşkek",
+		"foodDescription": "Düğünlerin ve özel davetlerin olmazsa olmaz yemeklerinden biri keşkek yemeğidir. Şüphesiz ülkemizde keşkek yemeğini bilmeyen yoktur.  Zahmetli diyebileceğimiz bir yemek olduğundan dolayı, yaparken güç ister.Keşkek daha çok Afyon’un Şuhut ilçesinde ağırlıklı şekilde yapılır. Öyle ki Şuhut ilçesinin tescil ettiği yemeklerinden biridir. Çok lezzetli bir yemek olduğundan dolayı herkes tarafından da sevilerek tüketilmektedir. Fakat lezzetli olduğu kadar aynı zamanda oldukça zahmetlidir. Bu yüzden keşkek daha çok özel günlerde yapılan yemek haline gelmiştir.Keşkek içerisinde buğday, kuşbaşı et, nohut, nane, tuz, tereyağı, salça gibi malzemeler yer alır. Keşkek içerisine eklenecek olan et, kırmızı ya da beyaz et olacak biçimde tercih edilebilir. Bazı yörelerde tavuk eti kullanılırken, Afyon şehrinde kuşbaşı et kullanılır. Eğer ki Afyon yolculuğu yapıyorsanız, zahmetli ve lezzetli olan keşkek yemeğini yemeden dönmeyin.",
+		"imageUrl": "https://i.resmim.net/pK2oY.jpg",
+		"City":{
+			"cityName": "Afyonkarahisar",
+			"cityDescription": "Afyonkarahisar, (halk arasındaki adıyla Afyon) Batı Anadolu ile İç Anadolu Bölgelerini birleştiren yüksek alanın güney parçasını oluşturan bir ildir. Türkiye’nin “Termal Başkenti”, aynı zamanda da mermercilik ve gıda sektöründe yurtdışında isim yapmış marka şehirlerinden biridir. Eski adı Afyon olan şehir, 2005’te Afyonkarahisar adını almıştır.",
+			"imageUrl": "https://i.resmim.net/pWSpk.jpg"
+		},
+		"Restaurant":{
+			"restaurantName":"Musakka Restaurant",
+				"restaurantAdress":"Burmalı, Basın Cd. No:10, 03030 Afyonkarahisar Merkez/Afyonkarahisar",
+				"restaurantGsm":"+902722123325",
+				"restaurantPwd":"1234",
+				"imageUrl":"https://i.resmim.net/pXnwr.jpg"
+		}
+	},
+	{		
+		"foodName": "Abdigör Köftesi",
+		"foodDescription": "Her yörenin kendine has köftesi olur da Ağrı’nın olmaz mı? Özellikle Doğubayazıt ilçesinde yaygın olan köfte, hem kıvamıyla hem tadıyla hem de yapılış şekli ile çok farklı. Köftenin özelliği klasik köfteler gibi kıyma ile değil, tokmak ile dövülen et ile yapılması. ",
+		"imageUrl": "https://i.resmim.net/pe8QE.jpg",
+		"City":{
+			"cityName": "Ağrı",
+			"cityDescription": "Geçmişte Karakilise, Ararat ve Karaköse adlarıyla anılan şehir, Orta Asya'dan gelen kavimlerin Anadolu'ya geçiş noktası Olmuştur. Bu durumdan dolayı çoğu yerleşik düzene geçmemiş olsa da, şehir birçok medeniyete ev sahipliği yaparak farklı kültürlere sahip olmuştur. Bu toprakları sırasıyla Hitit, Mitanniler, Urartu, Kimmerler, İskit ve Pers uygarlıklarının eline geçmiştir. 1054 yılında Selçuklu Sultanı Tuğrul Bey’in başlattığı akınlar sonucunda Türk yönetimine geçmiştir. En son 15 Nisan 1918 yılında Rusların elinde olan Ağrı, Sovyetler Birliği ile 1921’de yapılan antlaşmayla Türkiye Cumhuriyeti sınırları içerisine alınmıştır. Bu kadar çok medeniyete ev sahipliği yapmış olması, onlarca tarihi yapıya ve güzelliğe sahip olmasını sağlamıştır. Bunun turizme katkısı olsa da, şehir halkı geçimini daha çok tarım ve hayvancılıktan sağlamaktadır.",
+			"imageUrl": "https://i.resmim.net/pXuk8.jpg"
+		},
+		"Restaurant":{
+			"restaurantName":"Doğuş Restaurant",
+			"restaurantAdress":" Çiftepınar, Belediye Cad. No:10, 04400 Doğubayazıt (Doğubeyazıt)/Ağrı",
+			"restaurantGsm":"(0472) 312 73 48",
+			"restaurantPwd":"1234",
+			"imageUrl":"https://i.resmim.net/peyUy.jpg"
+		}
+	},
+	{		
+		"foodName": "Amasya Çöreği",
+		"foodDescription": "Çöreğe ismini verecek kadar özel olan yemek, elde hazırlanan özel hamur içerisine haşhaş ve çekilmiş ceviz eklenmesiyle yapılıyor. Yanına da taze demlenmiş bir fincan çayla harika ikili olan çöreği, hamur işi sevenlerdenseniz yemeye doyamayacağınıza eminiz. ",
+		"imageUrl": "https://i.resmim.net/pOueM.jpg",
+		"City":{
+			"cityName": "Amasya",
+			"cityDescription": "Karadeniz Bölgesi’nin Orta Karadeniz bölümünde bulunan Amasya, 7.500 yıllık geçmişi ile birlikte Anadolu’nun en eski yerleşim yerlerinden biridir. Anadolu’da örnek bir Türk şehri olarak öne çıkan Amasya, tarih boyunca birçok medeniyete, devlete ve topluluğa ev sahipliği yapmış bir şehirdir. 2017 yılı itibariyle nüfusu 329.888 olan Amasya’nın merkez ilçesi ile birlikte toplam 7 ilçesi bulunmaktadır. Nüfusun %40’tan fazlası merkez ilçede yaşamaktadır, geri kalan kısmı ise başta Merzifon ve Suluova olmak üzere diğer ilçelerine ayrılmıştır. Son yıllarda giderek artan bir ziyaretçi kitlesine de sahip Amasya, Anadolu’nun gelişmekte olan turistik bölgelerinin başında gelmektedir.",
+			"imageUrl": "https://i.resmim.net/ph0FR.jpg"
+		},
+		"Restaurant":{
+			"restaurantName":"Çörekçi Galip",
+			"restaurantAdress":"Prinçci Mah. Habibi Sok. No:10/A Bimarhane Arkası AMASYA",
+			"restaurantGsm":"03582182716",
+			"restaurantPwd":"1234",
+			"imageUrl":"https://resmin.net/images/2021/03/31/26.jpg"
+		}
+	}
+
+]

@@ -10,7 +10,7 @@ namespace ServerApp.DTO
       public int RestaurantID { get; set; }
       public string restaurantName {get; set;} 
       public string restaurantAdress{get; set;}
-      public int restaurantGsm {get; set;}
+      public string restaurantGsm {get; set;}
       public List<Reservation> Reservations{get; set;}
     }
 }

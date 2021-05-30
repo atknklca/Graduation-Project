@@ -38,13 +38,18 @@ namespace ServerApp
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {   
+        {
+            services.AddCors();
+
+
+
             services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DataContext")));
             services.AddIdentity<User, Role>().AddEntityFrameworkStores<DataContext>();
-            services.Configure<IdentityOptions>(options => {
-               
-                options.Password.RequireDigit= true;
+            services.Configure<IdentityOptions>(options =>
+            {
+
+                options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
@@ -52,34 +57,46 @@ namespace ServerApp
                 options.Lockout.MaxFailedAccessAttempts = 5;
                 options.User.RequireUniqueEmail = true;
             });
-            services.AddControllers().AddNewtonsoftJson( options =>{
-                     options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                 }
+            services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            }
                  );
-            services.AddAuthentication(x => {
+            services.AddAuthentication(x =>
+            {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x =>{
-                    x.RequireHttpsMetadata = false;
-                    x.SaveToken = true;
-                    x.TokenValidationParameters = new TokenValidationParameters{
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes( Configuration.GetSection("AppSettings:Secret").Value)),
-                        ValidateIssuer = false,
-                        ValidateAudience = false
-                    };
-                });
-                services.AddControllers();
-            
+            }).AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Secret").Value)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+            services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServerApp", Version = "v1" });
             });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,DataContext dataContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataContext dataContext)
         {
+
+            app.UseCors(options => options.AllowAnyHeader().AllowAnyMethod().SetIsOriginAllowed((host) => true).AllowCredentials());
+            //  app.UseCors(options =>options.WithOrigins("http://localhost:5000/"));
+
+            //   app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin().AllowCredentials());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -87,18 +104,23 @@ namespace ServerApp
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "ServerApp v1"));
                 SeedDatabase.Seed(dataContext).Wait();
             }
-            else{
-                app.UseExceptionHandler(appException =>{
-                    appException.Run(async context => {
+            else
+            {
+                app.UseExceptionHandler(appException =>
+                {
+                    appException.Run(async context =>
+                    {
                         context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
                         context.Response.ContentType = "application/json";
                         var contextException = context.Features.Get<IExceptionHandlerFeature>();
-                        if(contextException != null){
-                                await context.Response.WriteAsync(new ExceptionResponse(){
-                                    StatusCode = context.Response.StatusCode,
-                                    Message = contextException.Error.Message
-                                }.ToString());
-                            }
+                        if (contextException != null)
+                        {
+                            await context.Response.WriteAsync(new ExceptionResponse()
+                            {
+                                StatusCode = context.Response.StatusCode,
+                                Message = contextException.Error.Message
+                            }.ToString());
+                        }
                     });
 
                 });
@@ -114,6 +136,8 @@ namespace ServerApp
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }

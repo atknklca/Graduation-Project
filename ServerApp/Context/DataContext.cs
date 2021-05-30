@@ -13,9 +13,10 @@ namespace ServerApp.Context
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Food>().HasOne(b=> b.Restaurant).WithOne(i =>i.Food).HasForeignKey<Restaurant>(b => b.RestaurantID);
-            builder.Entity<Food>().HasOne(c => c.City).WithMany(f => f.Foods);
+            builder.Entity<Restaurant>().HasOne(r=> r.Food).WithOne(f =>f.Restaurant).HasForeignKey<Food>(f => f.RestaurantID);
+            builder.Entity<City>().HasMany(c => c.Foods).WithOne(f => f.City);
+            builder.Entity<Restaurant>().HasMany(r=>r.Reservations).WithOne(r=>r.Restaurant);
+            builder.Entity<User>().HasMany(r=>r.Reservations).WithOne(u=> u.User);
         }
-
         } 
 }

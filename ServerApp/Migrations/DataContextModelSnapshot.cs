@@ -19,7 +19,7 @@ namespace ServerApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FoodUser", b =>
+            modelBuilder.Entity("FoodUserDto", b =>
                 {
                     b.Property<int>("FavoritesFoodID")
                         .HasColumnType("int");
@@ -31,7 +31,7 @@ namespace ServerApp.Migrations
 
                     b.HasIndex("UsersId");
 
-                    b.ToTable("FoodUser");
+                    b.ToTable("FoodUserDto");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -135,6 +135,24 @@ namespace ServerApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("ServerApp.DTO.UserDto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("userEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("userName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserDto");
+                });
+
             modelBuilder.Entity("ServerApp.Models.City", b =>
                 {
                     b.Property<int>("CityID")
@@ -159,9 +177,17 @@ namespace ServerApp.Migrations
             modelBuilder.Entity("ServerApp.Models.Food", b =>
                 {
                     b.Property<int>("FoodID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CityID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("CityID")
+                    b.Property<int>("RestaurantID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("foodDescription")
@@ -177,37 +203,47 @@ namespace ServerApp.Migrations
 
                     b.HasIndex("CityID");
 
+                    b.HasIndex("RestaurantID")
+                        .IsUnique();
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("Foods");
                 });
 
             modelBuilder.Entity("ServerApp.Models.Reservation", b =>
                 {
-                    b.Property<int>("ReservationID")
+                    b.Property<int>("ReservationId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("RestaurantID")
+                    b.Property<int>("RestaurantID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int?>("UserDtoId")
                         .HasColumnType("int");
 
-                    b.Property<string>("reservationDate")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("reservationOwner")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("reservationOwnerGSM")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<string>("reservationTime")
+                    b.Property<string>("date")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ReservationID");
+                    b.Property<string>("owner")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ownerGsm")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("time")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ReservationId");
 
                     b.HasIndex("RestaurantID");
+
+                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -227,8 +263,8 @@ namespace ServerApp.Migrations
                     b.Property<string>("restaurantAdress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("restaurantGsm")
-                        .HasColumnType("int");
+                    b.Property<string>("restaurantGsm")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("restaurantName")
                         .HasColumnType("nvarchar(max)");
@@ -337,7 +373,7 @@ namespace ServerApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FoodUser", b =>
+            modelBuilder.Entity("FoodUserDto", b =>
                 {
                     b.HasOne("ServerApp.Models.Food", null)
                         .WithMany()
@@ -345,7 +381,7 @@ namespace ServerApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerApp.Models.User", null)
+                    b.HasOne("ServerApp.DTO.UserDto", null)
                         .WithMany()
                         .HasForeignKey("UsersId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -407,13 +443,19 @@ namespace ServerApp.Migrations
                 {
                     b.HasOne("ServerApp.Models.City", "City")
                         .WithMany("Foods")
-                        .HasForeignKey("CityID");
+                        .HasForeignKey("CityID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ServerApp.Models.Restaurant", "Restaurant")
                         .WithOne("Food")
-                        .HasForeignKey("ServerApp.Models.Food", "FoodID")
+                        .HasForeignKey("ServerApp.Models.Food", "RestaurantID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ServerApp.Models.User", null)
+                        .WithMany("Favorites")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("City");
 
@@ -424,15 +466,28 @@ namespace ServerApp.Migrations
                 {
                     b.HasOne("ServerApp.Models.Restaurant", "Restaurant")
                         .WithMany("Reservations")
-                        .HasForeignKey("RestaurantID");
+                        .HasForeignKey("RestaurantID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ServerApp.DTO.UserDto", null)
+                        .WithMany("Reservations")
+                        .HasForeignKey("UserDtoId");
 
                     b.HasOne("ServerApp.Models.User", "User")
                         .WithMany("Reservations")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Restaurant");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("ServerApp.DTO.UserDto", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 
             modelBuilder.Entity("ServerApp.Models.City", b =>
@@ -449,6 +504,8 @@ namespace ServerApp.Migrations
 
             modelBuilder.Entity("ServerApp.Models.User", b =>
                 {
+                    b.Navigation("Favorites");
+
                     b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618

@@ -22,16 +22,15 @@ namespace ServerApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetRestaurants(){
             var restorants = await _context.Restaurants.Select(r => RestorantToDto(r)).ToListAsync();
-            var x = await _context.Restaurants.Include(r => r.Food).ToListAsync();
-            return Ok(x);
+            return Ok(restorants);
         }
         //localhost:5000/api/restaurant/2
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRestaurant(int id){
-            var restorant = await _context.Restaurants.FindAsync(id);
+            var restorant = await _context.Restaurants.Include(r=> r.Reservations).FirstOrDefaultAsync(r=> r.RestaurantID==id);
             if(restorant == null)
                 return NotFound();
-            return Ok(RestorantToDto(restorant));
+            return Ok(restorant);
         }
         //localhost:5000/api/restaurant
         [HttpPost]

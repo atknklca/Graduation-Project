@@ -1,0 +1,52 @@
+<div class="wrapper">
+    <div class="page-header clear-filter" filter-color="orange">
+        <div class="page-header-image rellax-header" data-rellax-speed="-7"
+            style="background-image: url('assets/img/main1.jpg');">
+
+        </div>
+        <div class="container">
+            <div class="content-center brand">
+                <img style="width: 15rem; height: 15rem; margin-bottom:5rem;" src="assets/img/logo-yemin-ediyorum-last.png" alt="">
+                <h1 class="h1-seo">WuuTec</h1>
+                <h3>Beykent Üniversitesi Bitirme Projesi</h3>
+            </div>
+            <h6 class="category category-absolute">Designed and coded by Oğuzhan, Muhammed, Atakan.</h6>
+        </div>
+    </div>
+    <div class="main" style="background-image: url('assets/img/main3.jpg');">
+
+        <div class="container ">
+            <div class="row main-div justify-content-center">
+                <div class="col-4  align-self-center">
+                    <!-- <div class="input-group"
+                        [ngClass]="{'input-group-focus':focus1===true}">
+                        <input type="text" class="form-control" placeholder="Right Nucleo Icon" (focus)="focus1=true"
+                            (blur)="focus1=false">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="now-ui-icons users_single-02"></i></span>
+                        </div>
+                    </div> -->
+                    <input id="typeahead-focus" type="text" style="font-size: 1rem; border: 0.20em solid #999999;background-color: rgb(0 , 0, 0,0.6); color: #FFFFFF;" class="form-control" placeholder="Nerede?"
+                        [(ngModel)]="model1" [ngbTypeahead]="search" (focus)="focus$.next($any($event).target.value)"
+                        (click)="click$.next($any($event).target.value)" #instance="ngbTypeahead" />
+                    <!-- <hr> -->
+                    <!-- <pre>Model: {{ model | json }}</pre> -->
+                </div>
+                <div class="col-2 align-self-center ">
+                    <button id="ne-yenir" [routerLink]="['/city/food']" (click)="searchToCity(model1)" type="button"
+                        class="btn btn-primary btn-round">Ne Yenir?</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <div class="section section-signup" id="favorite" name="favorite"
+    style="background-image: url('assets/img/bg11.jpg'); background-size: cover; background-position: top center; min-height: 700px;">
+    <div class="container login-page">
+        
+    </div> -->
+    
+    <router-outlet></router-outlet>
+    <div id="ek-sayfa"></div>
+</div>

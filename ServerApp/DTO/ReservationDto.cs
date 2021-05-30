@@ -7,10 +7,12 @@ namespace ServerApp.DTO
     public class ReservationDto
     {
         [Key]
-        public int Id { get; set; }
-        public string reservationOwner{get; set;}
-        public int reservationOwnerGSM{get; set;}
-        public string reservationDate{get; set;}
-        public string reservationTime {get; set;}
+        public int ReservationId{get; set;}
+        public string owner {get; set;}
+        public string ownerGsm {get; set;}
+        public string date {get; set;}
+        public string time {get; set;}
+        public int RestaurantID{get; set;}
+        public int UserId{get; set;}
     }
 }
