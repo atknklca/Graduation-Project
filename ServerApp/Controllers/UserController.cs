@@ -47,6 +47,14 @@ namespace ServerApp.Controllers
             }
             return Ok(UserToDto(user));
          }
+        //http://localhost:5000/api/user/query?id=1
+         [HttpGet("query")]
+         public async Task<IActionResult> GetUserWithQuery([FromQuery] int id){
+            var user =  _context.Users.Include(u => u.Favorites).Include(u=> u.Reservations).Where(u=> u.Id==id);
+            if(user==null)
+                return NotFound();
+            return Ok(user);
+         }
 
         //localhost:5000/api/user/2
         [HttpPut("{id}")]

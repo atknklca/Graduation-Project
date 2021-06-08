@@ -4,8 +4,11 @@
         <span class="badge badge-neutral" style="font-size: xx-large; padding-bottom: 2rem;">Reservasyonlarım</span>
 
         <ul class="list-group-flush ul-scroll">
-            <li class="list-group-item">
-                <div class="row" style="margin: 1rem;position: relative;">
+            <li class="list-group-item" style="padding-bottom: 0; margin-bottom: 0; font-weight: bold;">
+                <div class="row" style="margin: 1rem; margin-bottom: 0; position: relative;">
+                    <div class="col" style="margin: auto;">
+                        <span>Restaurant Adı</span>
+                    </div>
                     <div class="col" style="margin: auto;">
                         <span>Rezervasyon Sahibi</span>
                     </div>
@@ -17,7 +20,37 @@
                     </div>
                     <div class="col-1">
                         <div>
-                            <button type="button" class="btn btn-primary btn-round  ">Sil</button>
+                            <button style="visibility: hidden;" type="button"
+                                class="btn btn-primary btn-round  ">Sil</button>
+                        </div>
+                    </div>
+
+                </div>
+            </li>
+            <li *ngIf="reservations?.length == 0">
+                <div style="padding: 1rem;">
+                    <span>Rezervasyon Yapmak İçin "Şehir Aramak -> Yemek Seçimi -> Rezervasyon Yap" Yolunu Takip
+                        Edebilirsiniz.</span>
+                </div>
+            </li>
+            <li *ngFor="let reservation of reservations" class="list-group-item">
+                <div class="row" style="margin: 1rem;position: relative;">
+                    <div class="col" style="margin: auto;">
+                        <span>{{getRestaurantName(reservation)}}</span>
+                    </div>
+                    <div class="col" style="margin: auto;">
+                        <span>{{reservation.owner}}</span>
+                    </div>
+                    <div class="col" style="margin: auto;">
+                        <span>{{reservation.date}}</span>
+                    </div>
+                    <div class="col" style="margin: auto;">
+                        <span>{{reservation.time}}</span>
+                    </div>
+                    <div class="col-1">
+                        <div>
+                            <button type="button" (click)="deleteReservation(reservation.reservationId)"
+                                class="btn btn-primary btn-round  ">Sil</button>
                         </div>
                     </div>
 

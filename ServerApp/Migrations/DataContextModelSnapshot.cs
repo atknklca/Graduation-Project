@@ -19,21 +19,6 @@ namespace ServerApp.Migrations
                 .HasAnnotation("ProductVersion", "5.0.4")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FoodUserDto", b =>
-                {
-                    b.Property<int>("FavoritesFoodID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UsersId")
-                        .HasColumnType("int");
-
-                    b.HasKey("FavoritesFoodID", "UsersId");
-
-                    b.HasIndex("UsersId");
-
-                    b.ToTable("FoodUserDto");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
                 {
                     b.Property<int>("Id")
@@ -135,24 +120,6 @@ namespace ServerApp.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("ServerApp.DTO.UserDto", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("userEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("userName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("UserDto");
-                });
-
             modelBuilder.Entity("ServerApp.Models.City", b =>
                 {
                     b.Property<int>("CityID")
@@ -187,9 +154,6 @@ namespace ServerApp.Migrations
                     b.Property<int>("RestaurantID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<string>("foodDescription")
                         .HasColumnType("nvarchar(max)");
 
@@ -206,8 +170,6 @@ namespace ServerApp.Migrations
                     b.HasIndex("RestaurantID")
                         .IsUnique();
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("Foods");
                 });
 
@@ -219,9 +181,6 @@ namespace ServerApp.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("RestaurantID")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserDtoId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -242,8 +201,6 @@ namespace ServerApp.Migrations
                     b.HasKey("ReservationId");
 
                     b.HasIndex("RestaurantID");
-
-                    b.HasIndex("UserDtoId");
 
                     b.HasIndex("UserId");
 
@@ -373,19 +330,19 @@ namespace ServerApp.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("FoodUserDto", b =>
+            modelBuilder.Entity("ServerApp.Models.UserFood", b =>
                 {
-                    b.HasOne("ServerApp.Models.Food", null)
-                        .WithMany()
-                        .HasForeignKey("FavoritesFoodID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("FoodID")
+                        .HasColumnType("int");
 
-                    b.HasOne("ServerApp.DTO.UserDto", null)
-                        .WithMany()
-                        .HasForeignKey("UsersId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.HasKey("FoodID", "Id");
+
+                    b.HasIndex("Id");
+
+                    b.ToTable("UserFoods");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -453,10 +410,6 @@ namespace ServerApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerApp.Models.User", null)
-                        .WithMany("Favorites")
-                        .HasForeignKey("UserId");
-
                     b.Navigation("City");
 
                     b.Navigation("Restaurant");
@@ -470,10 +423,6 @@ namespace ServerApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServerApp.DTO.UserDto", null)
-                        .WithMany("Reservations")
-                        .HasForeignKey("UserDtoId");
-
                     b.HasOne("ServerApp.Models.User", "User")
                         .WithMany("Reservations")
                         .HasForeignKey("UserId")
@@ -485,14 +434,33 @@ namespace ServerApp.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ServerApp.DTO.UserDto", b =>
+            modelBuilder.Entity("ServerApp.Models.UserFood", b =>
                 {
-                    b.Navigation("Reservations");
+                    b.HasOne("ServerApp.Models.Food", "Food")
+                        .WithMany("Users")
+                        .HasForeignKey("FoodID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ServerApp.Models.User", "User")
+                        .WithMany("Favorites")
+                        .HasForeignKey("Id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Food");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ServerApp.Models.City", b =>
                 {
                     b.Navigation("Foods");
+                });
+
+            modelBuilder.Entity("ServerApp.Models.Food", b =>
+                {
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("ServerApp.Models.Restaurant", b =>

@@ -1,0 +1,38 @@
+<div class="main">
+
+    <div class="container" style="padding-top: 5rem; padding-bottom: 5rem;">
+
+        <div *ngFor="let food of foods ">
+            <div *ngIf="food.cityID == choseCityId" class="row"
+                style="margin: 2rem;position: relative; padding-bottom: 3rem;">
+                <div class="col-md-5"><img style="width: 20rem; " src="{{food?.imageUrl}}" alt="Yemeğin Fotoğrafı">
+                </div>
+                <div class="col-md-7">
+                    <div class="food-title">
+                        <h1 (click)="show()">{{food.foodName}}</h1>
+                    </div>
+                    <div class="food-description" (click)="sendData()">
+                        <p>{{food.foodDescription}}</p>
+                    </div>
+                </div>
+                <div style="right: 0; position: absolute; bottom: 0;">
+                    <!-- [ngStyle]="{'color': favoriteFoodIds.includes(food.foodID) ? 'red': 'white'}"  -->
+                    <button *ngIf="loggedIn() && !favoriteFoodIds.includes(food.foodID)"
+                        (click)="addFavorite(food.foodID)" type="button" class="btn btn-primary btn-just-icon"
+                        style="padding: 0.75rem; margin: 0.75rem; background-color: grey;  border-radius: 5rem;">
+                        <i class="fa fa-heart"></i></button>
+                    <button *ngIf="loggedIn() && favoriteFoodIds.includes(food.foodID)"
+                        (click)="removeFavorite(food.foodID)" type="button" class="btn btn-primary btn-just-icon"
+                        style="padding: 0.75rem; margin: 0.75rem; color: red; border-radius: 5rem;">
+                        <i class="fa fa-heart"></i></button>
+                    <button [routerLink]="['/city/restaurant']" (click)="foodToRestaurant(food.restaurantID)"
+                        type="button" class="btn btn-primary btn-round">Restoranı Görüntüle</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>

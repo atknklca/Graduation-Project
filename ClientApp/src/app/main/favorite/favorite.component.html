@@ -4,15 +4,28 @@
         <span class="badge badge-neutral" style="font-size: xx-large; padding-bottom: 2rem;">Favorilerim</span>
 
         <ul class="list-group-flush ul-scroll">
-            <li class="list-group-item">
+            <li *ngIf="favoriteFoods?.length == 0" class="list-group-item">
                 <div class="row" style="margin: 1rem;position: relative;">
                     <div class="col" style="margin: auto;">
-                        <span>Yemek Adı</span>
+                        <span>Favorilerinize Eklemek İstediğiniz Yemekleri "Şehir Seç -> Favorilere Ekle" Yoluyla
+                            Ulaşabilirsiniz.</span>
                     </div>
-                    <div class="col-1">
-                        <div>
-                            <button type="button" class="btn btn-primary btn-round">Sil</button>
-                        </div>
+
+
+                </div>
+            </li>
+            <li *ngFor="let favFood of favoriteFoods" class="list-group-item">
+                <!-- *ngIf="foods?.includes(favFood.foodID)" -->
+                <div class="row" style="margin: 1rem;position: relative;">
+                    <div class="col" style="margin: auto;">
+                        <img style="width: 15rem;" src="{{getFoodImage(favFood)}}" />
+                    </div>
+                    <div class="col" style="margin: auto; font-weight: bold; font-size: 1.5rem;">
+                        <span>{{appo(favFood)}}</span>
+                    </div>
+                    <div class="col-1" style="margin: auto;">
+                        <button (click)="removeFavorite(favFood.foodID)" type="button"
+                            class="btn btn-primary btn-round">Sil</button>
                     </div>
 
                 </div>

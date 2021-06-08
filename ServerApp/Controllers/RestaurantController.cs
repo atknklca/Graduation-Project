@@ -78,7 +78,8 @@ namespace ServerApp.Controllers
                 restaurantName = restaurant.restaurantName,
                 restaurantAdress = restaurant.restaurantAdress,
                 restaurantGsm = restaurant.restaurantGsm,
-                Reservations = restaurant.Reservations
+                Reservations = restaurant.Reservations,
+                imageUrl=restaurant.imageUrl
             };
         }
     }

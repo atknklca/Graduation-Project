@@ -1,0 +1,35 @@
+.user-restaurant-background {
+  background-color: white;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(50, 50, 50, 1) 10%,
+    rgba(100, 100, 100, 1) 20%,
+    rgba(150, 150, 150, 1) 30%,
+    rgba(235, 235, 235, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
+  /* linear-gradient(0deg, rgba(44, 44, 44, 0.2), rgba(0, 0, 0, 0.5)); */
+}
+.main {
+  background: transparent;
+  /* border-radius: 2rem;
+  border-color: black;
+  border-width: medium;
+  border-style: solid; */
+  padding: 3rem;
+}
+
+.mean-out {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  padding: 0;
+  min-width:min-content;
+  font-size: 0.9em;
+}
+.mean-in {
+  align-items: center;
+  display: flex;
+  font-size: 0.9em;
+}

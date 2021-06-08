@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "EzMQZXSL7jrzWFr11ozagiJ1pBfU/A26eTXc73Uq89+bhchoc/u0u+12hwoAqHcp3LcyQX32TrMaYlUgAidgBw==",
+  "dgSpecHash": "EqxH4267ci1HFNTAs7CXv7uwCawApzuEJDE99z+baOYWqNelJhlX+R8kUv16AzOnIgJsnexxnOIdhyjSIY0rBg==",
   "success": true,
-  "projectFilePath": "d:\\nakat\\Desktop\\Graduation-Project-first\\ServerApp.csproj",
+  "projectFilePath": "d:\\nakat\\Desktop\\favorite\\Graduation-Project-first\\ServerApp\\ServerApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nakat\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nakat\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.4\\microsoft.aspnetcore.authentication.jwtbearer.3.1.4.nupkg.sha512",

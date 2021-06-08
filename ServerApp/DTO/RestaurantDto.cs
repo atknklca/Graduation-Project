@@ -11,6 +11,7 @@ namespace ServerApp.DTO
       public string restaurantName {get; set;} 
       public string restaurantAdress{get; set;}
       public string restaurantGsm {get; set;}
+      public string imageUrl { get; set; }
       public List<Reservation> Reservations{get; set;}
     }
 }

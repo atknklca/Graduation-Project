@@ -36,6 +36,24 @@ namespace ServerApp.Controllers
             return Ok(ReservationToDto(reservation));
          }
 
+          //http://localhost:5000/api/reservation/query?userId=1
+         [HttpGet("query")]
+         public async Task<IActionResult> GetReservationWithQuery([FromQuery] int userId){
+            var reservation = _context.Reservations.Where(u=> u.UserId==userId); // sorgu için Include(u => u.Reservations)
+            if(reservation==null)
+                return NotFound();
+            return Ok(reservation);
+         }
+
+         //http://localhost:5000/api/reservation/query?restaurantId=1
+         [HttpGet("q")]
+         public async Task<IActionResult> GetReservationWithQuerySecond([FromQuery] int restaurantId){
+            var reservation = _context.Reservations.Where(u=> u.RestaurantID==restaurantId); // sorgu için Include(u => u.Reservations)
+            if(reservation==null)
+                return NotFound();
+            return Ok(reservation);
+         }
+
           //localhost:5000/api/reservation/2
          [HttpPut("{id}")]
          public async Task<IActionResult> UpdateReservation(int id, Reservation newData) { 

@@ -10,6 +10,7 @@ namespace ServerApp.Context
             public DbSet<City> Cities { get; set; }
             public DbSet<Reservation> Reservations { get; set; }
             public DbSet<Food> Foods { get; set; }
+            public DbSet<UserFood> UserFoods{get; set;}
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -17,6 +18,9 @@ namespace ServerApp.Context
             builder.Entity<City>().HasMany(c => c.Foods).WithOne(f => f.City);
             builder.Entity<Restaurant>().HasMany(r=>r.Reservations).WithOne(r=>r.Restaurant);
             builder.Entity<User>().HasMany(r=>r.Reservations).WithOne(u=> u.User);
+            builder.Entity<UserFood>().HasKey(us=> new{us.FoodID, us.Id});
+            builder.Entity<UserFood>().HasOne(us=> us.Food).WithMany(us=> us.Users).HasForeignKey(us=> us.FoodID);
+            builder.Entity<UserFood>().HasOne(us=> us.User).WithMany(us=> us.Favorites).HasForeignKey(us=> us.Id);
         }
         } 
 }

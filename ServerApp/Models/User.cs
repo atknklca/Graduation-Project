@@ -8,10 +8,10 @@ namespace ServerApp.Models
     {
         //Id, UserName, Email, PhoneNumber, PasswordHash
         public User(){
-            Favorites = new List<Food>();
+            Favorites = new List<UserFood>();
             Reservations = new List<Reservation>();
         }
-        public List<Food> Favorites { get; set; }
+        public List<UserFood> Favorites { get; set; }
         public List<Reservation> Reservations {get; set;}
     }
 }

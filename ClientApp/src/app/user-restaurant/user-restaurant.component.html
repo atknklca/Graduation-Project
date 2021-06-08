@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <div class="user-restaurant-background main-div"
+        style="display: flex; justify-content: center; align-items: center;">
+        <div class="container">
+            <div class="main" style="overflow: auto;">
+                <div class="row" style="font-weight: bold; padding-bottom: 1rem;">
+                    <div class="col-3 mean-out"><span class="mean-in">Rezervasyon Sahibi</span></div>
+                    <div class="col-3 mean-out"><span class="mean-in">İrtibat Numarası</span></div>
+                    <div class="col-3 mean-out"><span class="mean-in">Rezervasyon Tarihi</span></div>
+                    <div class="col-2 mean-out"><span class="mean-in">Rezervasyon Saati</span></div>
+                    <div class="col-1 mean-out" style="visibility: hidden;"></div>
+                </div>
+                <div *ngIf="reservations?.length == 0">
+                    <div style="padding: 2rem;">
+                        <span>Şuanda Restaurantınıza Ait Rezervasyon Bulunmamaktadır!</span>
+                    </div>
+                </div>
+                <div *ngFor="let reservation of reservations">
+                    <div class="row">
+                        <div class="col-3 mean-out"><span class="mean-in">{{reservation.owner}}</span></div>
+                        <div class="col-3 mean-out"><span class="mean-in">{{reservation.ownerGsm}}</span></div>
+                        <div class="col-3 mean-out"><span class="mean-in">{{reservation.date}}</span></div>
+                        <div class="col-2 mean-out"><span class="mean-in">{{reservation.time}}</span></div>
+                        <div class="col-1 mean-out"><button type="button"
+                                (click)="deleteReservation(reservation.reservationId)"
+                                class="btn btn-primary btn-round">Sil</button> </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

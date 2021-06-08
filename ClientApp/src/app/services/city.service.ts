@@ -3,21 +3,22 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { City } from '../city/city';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
+import { basePath } from 'environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
   constructor(private http: HttpClient) { }
-  path  ='http://localhost:5000/api/city';
+  path  = basePath + 'api/city';
 
-  getCities(cityId): Observable<City[]>{
+  getCities(cityId?): Observable<City[]>{
     let newPath = this.path;
     if(cityId){
       newPath +=cityId
     }
     return this.http.get<City[]>(newPath).pipe(
-      tap((data) => console.log(JSON.stringify(data))),
+      tap((data) => {/*console.log(JSON.stringify(data))*/}),
       catchError(this.handleError)
     );
   }

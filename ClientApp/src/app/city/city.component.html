@@ -1,20 +1,15 @@
 <div class="wrapper">
     <div class="page-header clear-filter" filter-color="orange">
         <div class="page-header-image rellax-header" data-rellax-speed="-7"
-            style="background-image: url('assets/img/header.jpg');">
+            style="background-image: url('{{chosedCity?.imageUrl}}');">
         </div>
         <div class="container">
             <div class="content-center">
-                <h6 style="font-size: 10em;">İstanbul</h6>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut bibendum, augue et porta tempor, lorem
-                    enim condimentum eros, ut lacinia nisl nulla quis felis. Sed dapibus vitae urna rhoncus pharetra.
-                    Duis pellentesque ante ultrices mollis ultrices. Nam accumsan, lorem non laoreet blandit, elit sem
-                    consectetur eros, eu interdum justo tortor nec felis. Interdum et malesuada fames ac ante ipsum
-                    primis in faucibus. Donec et sodales felis. Cras leo ipsum, dapibus eget velit eget, lacinia
-                    vestibulum nulla. Sed nunc nibh, vulputate vel malesuada sed, ultrices quis odio. Fusce gravida,
-                    augue id finibus sodales, nisl erat viverra leo, a tristique ante dolor.</p>
+                <span style="font-size: 10em;">{{chosedCity?.cityName}}</span>
+                    <p style="padding-top: 2rem;">{{chosedCity?.cityDescription}}
+                    </p>
             </div>
         </div>
     </div>
 </div>
-<router-outlet>
+<router-outlet></router-outlet>

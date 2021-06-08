@@ -4,7 +4,10 @@ import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/common';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AuthService } from './services/auth.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
+
 
 @Component({
     selector: 'app-root',
@@ -13,9 +16,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 })
 export class AppComponent implements OnInit {
     private _router: Subscription;
+    jwtHelper = new JwtHelperService();
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
+    constructor( private renderer : Renderer2, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location, private authService: AuthService) {}
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
@@ -38,6 +42,11 @@ export class AppComponent implements OnInit {
                     navbar.classList.add('navbar-transparent');
                 }
             });
+
+            const token = localStorage.getItem("token");
+            this.authService.decodedToken = this.jwtHelper.decodeToken(token);
         });
+
+
     }
 }

@@ -1,24 +1,16 @@
-import { ViewChild } from '@angular/core';
 import { Component, OnInit, Renderer2, OnDestroy } from '@angular/core';
+import { FormControl, NgControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbDateStruct, NgbTypeahead } from '@ng-bootstrap/ng-bootstrap';
 import { NgbAccordionConfig } from '@ng-bootstrap/ng-bootstrap';
+import { City } from 'app/city/city';
+import { AlertifyService } from 'app/services/alertify.service';
+import { CityService } from 'app/services/city.service';
 import * as Rellax from 'rellax';
-import { merge } from 'rxjs';
-import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
-import { OperatorFunction } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
-import { distinctUntilChanged } from 'rxjs/operators';
-import { debounceTime } from 'rxjs/operators';
 
-const city = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'California', 'Colorado',
-  'Connecticut', 'Delaware', 'District Of Columbia', 'Federated States Of Micronesia', 'Florida', 'Georgia',
-  'Guam', 'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine',
-  'Marshall Islands', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana',
-  'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Northern Mariana Islands', 'Ohio', 'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virgin Islands', 'Virginia',
-  'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'];
+
+let cityName = ['adana','izmir'];
 
 @Component({
   selector: 'app-components',
@@ -34,12 +26,32 @@ const city = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'Cal
     ngb-progressbar {
         margin-top: 5rem;
     }
+    .example {
+      overflow-y: scroll; 
+    }
+    
+    .example::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .example {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
     `]
 })
 
 export class MainComponent implements OnInit, OnDestroy {
+  myControl = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  filteredOptions: Observable<string[]>;
+
+  filterText = '';
+
+
   model1: any;
   data: Date = new Date();
+  cities: City[]
 
   page = 4;
   page1 = 5;
@@ -47,6 +59,7 @@ export class MainComponent implements OnInit, OnDestroy {
   focus;
   focus1;
   focus2;
+  isTouched = false;
 
   date: { year: number, month: number };
   model: NgbDateStruct;
@@ -57,7 +70,11 @@ export class MainComponent implements OnInit, OnDestroy {
 
   state_icon_primary = true;
 
-  constructor(private renderer: Renderer2, config: NgbAccordionConfig) {
+  constructor(private renderer: Renderer2, 
+    config: NgbAccordionConfig, 
+    private cityService: CityService,
+    private router:Router,
+    private alertify: AlertifyService) {
     config.closeOthers = true;
     config.type = 'info';
   }
@@ -77,7 +94,14 @@ export class MainComponent implements OnInit, OnDestroy {
     navbar.classList.add('navbar-transparent');
     var body = document.getElementsByTagName('body')[0];
     body.classList.add('index-page');
+
+    this.cityService.getCities().subscribe((data) => {
+      this.cities = data;
+    });
+    
+
   }
+ 
   ngOnDestroy() {
     var navbar = document.getElementsByTagName('nav')[0];
     navbar.classList.remove('navbar-transparent');
@@ -85,29 +109,30 @@ export class MainComponent implements OnInit, OnDestroy {
     body.classList.remove('index-page');
   }
 
-  @ViewChild('instance', { static: true }) instance: NgbTypeahead;
-  focus$ = new Subject<string>();
-  click$ = new Subject<string>();
+  choseCity(city){
+    this.filterText = city.cityName;
+  }
+  searchToCity(){
 
-  search: OperatorFunction<string, readonly string[]> = (text$: Observable<string>) => {
-    const debouncedText$ = text$.pipe(debounceTime(200), distinctUntilChanged());
-    const clicksWithClosedPopup$ = this.click$.pipe(filter(() => !this.instance.isPopupOpen()));
-    const inputFocus$ = this.focus$;
+    let sonuc = this.cities.find(x => x.cityName.toLowerCase() == this.filterText.toLowerCase())
 
-    return merge(debouncedText$, inputFocus$, clicksWithClosedPopup$).pipe(
-      map(term => (term === '' ? city
-        : city.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1)).slice(0, 81))
-
-    );
+    if(sonuc){
+      this.router.navigate(['/city/food/'+this.cities.find(x =>  x.cityName.toLowerCase() == this.filterText.toLowerCase()).cityID]);
+    }else{
+      this.alertify.error("Lütfen Şehir İsmini Doğru Giriniz. Örnek Aşağıda Listede Belirtilmiştir!");
+    }
+    //
+    
   }
 
-   searchToCity(model1){
-     if(model1 =="Alaska"){
-      console.log(model1)
-     }else{
-       console.log("Lütfens akdasjd")
-     }
-    
-   }
+  ac() {
+    if(this.isTouched)
+      this.isTouched  =false;
+      else
+      this.isTouched = true;
+
+  }
+
+
 
 }

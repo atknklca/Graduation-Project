@@ -5823,11 +5823,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\nakat\\Desktop\\Graduation-Project-first\\ServerApp.csproj",
+      "projectUniqueName": "d:\\nakat\\Desktop\\favorite\\Graduation-Project-first\\ServerApp\\ServerApp.csproj",
       "projectName": "ServerApp",
-      "projectPath": "d:\\nakat\\Desktop\\Graduation-Project-first\\ServerApp.csproj",
+      "projectPath": "d:\\nakat\\Desktop\\favorite\\Graduation-Project-first\\ServerApp\\ServerApp.csproj",
       "packagesPath": "C:\\Users\\nakat\\.nuget\\packages\\",
-      "outputPath": "d:\\nakat\\Desktop\\Graduation-Project-first\\obj\\",
+      "outputPath": "d:\\nakat\\Desktop\\favorite\\Graduation-Project-first\\ServerApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nakat\\AppData\\Roaming\\NuGet\\NuGet.Config",

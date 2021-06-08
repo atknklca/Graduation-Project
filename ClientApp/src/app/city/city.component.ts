@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FoodComponent } from 'app/city/food/food.component';
 import { CityService } from 'app/services/city.service';
 import { City } from './city';
 
@@ -9,26 +10,34 @@ import { City } from './city';
   styleUrls: ['./city.component.scss'],
   providers: [CityService]
 })
-export class CityComponent implements OnInit, OnDestroy {
+export class CityComponent implements OnInit {
 
   constructor(private element: ElementRef, private cityService: CityService,
     private activatedRoute: ActivatedRoute) { }
 
-  city: City[];
+  cities: City[];
+  chosedCity;
+  chosedCityId;
+  chosedRestaurantId;
 
   ngOnInit() {
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
     navbar.classList.remove('navbar-transparent');
-
-    this.activatedRoute.params.subscribe(params => {
-      this.cityService.getCities(params["cityId"]).subscribe((data) => {
-        this.city = data;
+    this.activatedRoute.firstChild.params.subscribe(params => {
+      this.cityService.getCities(null).subscribe((data) => {
+        this.cities = data;
+        this.chosedCity = data.find(x => x.cityID == params["cityId"]);
       });
-    })
+    });
+
+    // this.activatedRoute.params.subscribe(p => )
+
+
   }
 
   ngOnDestroy() {
     let navbar = document.getElementsByTagName('app-navbar')[0].children[0];
 
   }
+
 }

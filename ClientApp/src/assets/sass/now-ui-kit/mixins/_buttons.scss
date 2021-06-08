@@ -34,7 +34,8 @@
         &.focus,
         &:active,
         &.active {
-            background-color: $btn-color;
+            cursor: auto;
+            background-color: #555555;// $btn-color;
             border-color: $btn-color;
         }
     }
