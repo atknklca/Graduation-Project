@@ -1,0 +1,6 @@
+{
+	"appId": "com.angular.nny",
+	"appName": "nny",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}

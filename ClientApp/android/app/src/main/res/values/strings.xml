@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">nny</string>
+    <string name="title_activity_main">nny</string>
+    <string name="package_name">com.angular.nny</string>
+    <string name="custom_url_scheme">com.angular.nny</string>
+</resources>
